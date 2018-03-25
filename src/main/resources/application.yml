@@ -1,0 +1,29 @@
+server:
+    port: 9000
+
+liquibase:
+    #enabled: true
+    change-log: classpath:liquibase/changesets/master-changelog.xml
+    contexts: "init, data"
+    enabled: true
+    #labels: "dev OR all"
+
+spring:
+    application:
+        name: stocks
+    datasource:
+        driverClassName: org.h2.Driver
+        url: jdbc:h2:mem:bootapp;DB_CLOSE_DELAY=-1
+        username: sa
+        password:
+
+    h2.console.enabled: true
+    h2.console.path: /h2-console
+
+
+    jpa.hibernate.ddl-auto: validate
+
+    logging:
+        level:
+          root: DEBUG
+          org.springframework.web: DEBUG

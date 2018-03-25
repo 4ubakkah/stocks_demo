@@ -1,0 +1,40 @@
+<div class="container">
+
+    <div class="row" ng-if="errorMessage != null">
+        <div class="alert alert-success">{{successMessage}}</div>
+    </div>
+
+    <!-- List stocks -->
+    <div class="col-md-12" ng-controller="stocksController">
+
+            <table class="table table-hover table-striped table-condensed" ng-show="stocks.length">
+                <h2 class="lead, text-center">All existing stocks</h2>
+                <thead>
+                    <td>Name</td>
+                    <td>Current Price</td>
+                    <td>Last Updated</td>
+                    <td>Actions</td>
+                </thead>
+                <tbody ng-show="stocks.length">
+                <tr ng-repeat="stock in stocks">
+                    <td>{{stock.name}}</td>
+                    <td>{{stock.currentPrice}}</td>
+                    <td>{{stock.lastUpdated | date:'MM-dd-yyyy HH:mm:ss'}}</td>
+                    <td>
+                        <button type="submit" class="btn btn-success" ng-click="edit(stock.id)" disabled="true">
+                            <span class="glyphicon glyphicon-plus"></span> Edit
+                        </button>
+                        <button class="btn btn-danger" ng-click="delete(stock.id)" disabled="true">
+                            <span class="glyphicon glyphicon-minus"></span> Delete </button>
+                        </button>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+
+        <div ng-show="!stocks.length">
+            No stocks to display.
+        </div>
+
+    </div>
+</div>
